@@ -1,8 +1,20 @@
-import React from "react"
-
+import React from 'react';
+import { useSelector } from 'react-redux'
+import WeatherCard from "../../components/WeatherCard";
+import { Col } from 'antd'
 const Forecast = () => {
+    const forecast = useSelector((state) => state.forecast.value);
+    console.log(forecast);
     return (
-        <div><p>Forecast</p></div>
+        <>
+            <Col span={4}></Col>
+            <Col span={16}>
+            {forecast && forecast.map((today) =>  
+            <WeatherCard  {...today?.main} {...today?.wind} description={today.weather[0].description} />)}
+            </Col>
+            <Col span={4}></Col>
+        </>
+
     )
 }
 

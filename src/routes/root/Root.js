@@ -22,7 +22,6 @@ const Root = () => {
 
     const [current, setCurrent] = useState('home');
     const onClick = (e) => {
-        console.log('click ', e);
         setCurrent(e.key);
     }
     return (
@@ -32,11 +31,11 @@ const Root = () => {
                     <Col span={2}></Col>
                     <Col span={20} >
                         <Row >
-                            <Col span={6}></Col>
-                            <Col span={12} style={{justifyContent:'center', display:'flex',width:'10em'}}>
-                                <Menu onClick={onClick} selectedKeys={[current]} mode='horizontal' items={items} style={{ marginTop: '1em', marginBottom: '2em' }} />
+                            <Col span={8}></Col>
+                            <Col span={8} style={{justifyContent:'center', display:'flex'}}>
+                                <Menu onClick={onClick} selectedKeys={[current]} mode='horizontal' items={items} style={{ marginTop: '1em', marginBottom: '2em', justifyContent:'center', minWidth:'20em'}} />
                             </Col>
-                            <Col span={6}></Col>
+                            <Col span={8}></Col>
                             <Outlet />
                         </Row>
                     </Col>

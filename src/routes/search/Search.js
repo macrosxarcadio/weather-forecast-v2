@@ -3,6 +3,7 @@ import { SearchOutlined } from '@ant-design/icons'
 import { useSelector, useDispatch } from 'react-redux'
 import { setNewWeather } from '../../features/weather/weatherSlice'
 import { setNewLocation } from '../../features/weather/LocationSlice'
+import { setNewForecast } from "../../features/weather/forecastSlice"
 import Api from '../../features/Api/apiWeather'
 import WeatherCard from "../../components/WeatherCard"
 
@@ -17,8 +18,10 @@ import {
 
 const Search = () => {
     const [currentWeather, setCurrentWeather] = useState();
+    const [forecast, setForecast] = useState();
     const location = useSelector((state) => state.location.value);
     const newWeather = useSelector((state) => state.weather.value);
+    
     const dispatch = useDispatch();
 
     const onFinish = (locationData) => {
@@ -31,12 +34,22 @@ const Search = () => {
     };
 
     useEffect(() => {
-        location && Api(location.locationData.city ? location.locationData.city : location.locationData.zip, setCurrentWeather);
+        location && Api(
+            location.locationData.city ? 
+            location.locationData.city : 
+            location.locationData.zip,
+            setCurrentWeather,
+            setForecast);
     }, [location]);
 
     useEffect(() => {
-        dispatch(setNewWeather(currentWeather?.data))
-    }, [currentWeather])
+        dispatch(setNewWeather(currentWeather?.data));
+        
+    }, [currentWeather]);
+
+    useEffect(() => {
+        dispatch(setNewForecast(forecast));
+    }, [forecast]);
 
     return (
             <>
