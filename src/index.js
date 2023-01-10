@@ -4,7 +4,7 @@ import Forecast from './routes/forecast/Forecast';
 import Search from './routes/search/Search';
 import Home from './routes/home/Home'
 import './index.css';
-import { store } from './app/store';
+import { store } from './utils/store';
 import ReactDOM from "react-dom/client";
 import Root from './routes/root/Root'
 import {

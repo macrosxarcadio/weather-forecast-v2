@@ -3,7 +3,7 @@ import {  Col, Button, Image } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import './home.css'
 import { Link } from 'react-router-dom'
-import sun from '../../resources/sun.png'
+import sun from '../../assets/sun.png'
 
 const Home = () => {
   

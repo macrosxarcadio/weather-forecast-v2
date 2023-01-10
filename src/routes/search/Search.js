@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setNewWeather } from '../../features/weather/weatherSlice'
 import { setNewLocation } from '../../features/weather/LocationSlice'
 import { setNewForecast } from "../../features/weather/forecastSlice"
-import apiReq from '../../features/Api/apiWeather'
+import apiReq from '../../api/apiWeather'
 import WeatherCard from "../../components/WeatherCard"
 
 import {
