@@ -1,8 +1,8 @@
 import axios from 'axios'
+const key = process.env.REACT_APP_API_KEY
 
-console.log(process.env.REACT_APP_APY_KEY);
-console.log(process.env.NODE_ENV);
 const Api = (city, setCurrentWeather, setForecast, lat, lon) => {
+    
     const getGeolocation = axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${key}`);
 
     getGeolocation.then((res) => {
