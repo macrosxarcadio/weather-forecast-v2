@@ -1,6 +1,9 @@
-## Available Scripts
+## Weather forecast app
 
-In the project directory, you can run:
+Simple app to know your actual weather and the next 30 days.
+Structure of the proyect:
+
+
 
 ### `npm start`
 
