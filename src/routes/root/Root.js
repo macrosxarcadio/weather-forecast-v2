@@ -1,10 +1,15 @@
 import { Col, Row, Menu, Form } from 'antd'
 import { Outlet, Link } from 'react-router-dom'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { redirect } from 'react-router-dom';
 
 
 const Root = () => {
-
+    const newWeather = useSelector((state) => state.weather.value);
+    const [forecastState, setForecastState] = useState(true);
+    useEffect(() => newWeather ? setForecastState(false) : setForecastState (true), [newWeather]);
+    useEffect(() => redirect('/home'),[]);
     const items = [
         {
             label: <Link to={'/home'}> Home </Link>,
@@ -16,7 +21,8 @@ const Root = () => {
         },
         {
             label: <Link to={'/forecast'}> Forecast </Link>,
-            key: 'forecast'
+            key: 'forecast',
+            disabled: forecastState
         }
     ]
 
@@ -24,6 +30,8 @@ const Root = () => {
     const onClick = (e) => {
         setCurrent(e.key);
     }
+
+    useEffect(() => setCurrent)
     return (
         <Row>
             <Col span={24}>
