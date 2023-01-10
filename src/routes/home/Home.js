@@ -1,21 +1,11 @@
-import React, { useEffect } from "react"
-import { useState } from "react"
+import React from "react"
 import {  Col, Button, Image } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
-import WeatherCard from "../../components/WeatherCard";
-import Api from "../../features/Api/apiWeather";
 import './home.css'
 import { Link } from 'react-router-dom'
 import sun from '../../resources/sun.png'
 
 const Home = () => {
-
-  const citys = [
-    'london',
-    'new york',
-    'buenos aires',
-    'tokio'
-  ]
   
   return (
       <>

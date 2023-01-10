@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setNewWeather } from '../../features/weather/weatherSlice'
 import { setNewLocation } from '../../features/weather/LocationSlice'
 import { setNewForecast } from "../../features/weather/forecastSlice"
-import Api from '../../features/Api/apiWeather'
+import apiReq from '../../features/Api/apiWeather'
 import WeatherCard from "../../components/WeatherCard"
 
 import {
@@ -21,7 +21,8 @@ const Search = () => {
     const [forecast, setForecast] = useState();
     const location = useSelector((state) => state.location.value);
     const newWeather = useSelector((state) => state.weather.value);
-    
+    const [getCurrentWeather, getForecast] = apiReq();
+
     const dispatch = useDispatch();
 
     const onFinish = (locationData) => {
@@ -34,17 +35,13 @@ const Search = () => {
     };
 
     useEffect(() => {
-        location && Api(
-            location.locationData.city ? 
-            location.locationData.city : 
-            location.locationData.zip,
-            setCurrentWeather,
-            setForecast);
+        console.log("loc",location);
+        location && getCurrentWeather(location.locationData.city ? location.locationData.city : location.locationData.zip, setCurrentWeather, location.locationData.lat, location.locationData.lon);
+        location && getForecast(location.locationData.city ? location.locationData.city : location.locationData.zip, setForecast, location.locationData.lat, location.locationData.lon)
     }, [location]);
 
     useEffect(() => {
         dispatch(setNewWeather(currentWeather?.data));
-        
     }, [currentWeather]);
 
     useEffect(() => {
@@ -52,7 +49,7 @@ const Search = () => {
     }, [forecast]);
 
     return (
-            <>
+        <>
             <Col span={4}></Col>
             <Col span={16} gutter={[8, 48]} >
                 <Input.Group size="large">
@@ -80,7 +77,7 @@ const Search = () => {
                             <Col span={6}>
                                 <Form.Item
 
-                                    name="latitud">
+                                    name="lat">
                                     <Input placeholder="latitud" />
                                 </Form.Item>
 
@@ -88,7 +85,7 @@ const Search = () => {
                             <Col span={6}>
                                 <Form.Item
 
-                                    name="longitud">
+                                    name="lon">
                                     <Input placeholder="longitud" />
                                 </Form.Item>
                             </Col>
@@ -102,10 +99,10 @@ const Search = () => {
             <Col span={4}></Col>
             <Col span={4}></Col>
             <Col span={16}>
-               {newWeather?.main && <WeatherCard  {...newWeather?.main} {...newWeather?.wind} {...newWeather?.weather[0]} /> }
+                {newWeather?.main && <WeatherCard  {...newWeather?.main} {...newWeather?.wind} {...newWeather?.weather[0]} />}
             </Col>
             <Col span={4}></Col>
-            </>
+        </>
     )
 }
 
