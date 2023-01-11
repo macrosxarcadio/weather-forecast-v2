@@ -20,10 +20,9 @@ The project use these techs:
 -routes : routes configuration
 -utils : hooks, apis
 
+## Set yout Custom Environment Variables 
 
-
-
-
+- Create an .env file and add your REACT_APP_API_KEY for the https://openweathermap.org/ api
 
 ### `npm start`
 
