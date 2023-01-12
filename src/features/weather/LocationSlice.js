@@ -1,20 +1,20 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   value: 0,
-}
+};
 
 export const locationSlice = createSlice({
-  name: 'Location',
+  name: "Location",
   initialState,
   reducers: {
     setNewLocation: (state, action) => {
-      state.value = action.payload
+      state.value = action.payload;
     },
   },
-})
+});
 
 // Action creators are generated for each case reducer function
-export const { setNewLocation } = locationSlice.actions
+export const { setNewLocation } = locationSlice.actions;
 
-export default locationSlice.reducer
+export default locationSlice.reducer;

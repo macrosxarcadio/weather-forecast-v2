@@ -3,6 +3,7 @@
 This project is a simple app to know your actual weather and the next 30 days.
 
 ## Techs
+
 The project use these techs:
 
 - Antd for the components of the interface https://ant.design/docs/react/introduce
@@ -20,7 +21,7 @@ The project use these techs:
 -routes : routes configuration
 -utils : hooks, apis
 
-## Set yout Custom Environment Variables 
+## Set yout Custom Environment Variables
 
 - Create an .env file and add your REACT_APP_API_KEY for the https://openweathermap.org/ api
 
@@ -31,4 +32,3 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
-
