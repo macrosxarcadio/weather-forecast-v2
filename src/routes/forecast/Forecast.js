@@ -9,12 +9,12 @@ const Forecast = () => {
       <Col span={4}></Col>
       <Col span={16}>
         {forecast &&
-          forecast.map((today) => (
+          forecast.map((today,index) => (
             <WeatherCard
               {...today?.main}
               {...today?.wind}
               description={today.weather[0].description}
-              key
+              key={index}
             />
           ))}
       </Col>
