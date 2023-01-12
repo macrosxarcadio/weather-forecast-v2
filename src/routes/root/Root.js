@@ -1,4 +1,3 @@
-import React from 'react';
 import { Col, Row, Menu } from 'antd'
 import { Outlet, Link } from 'react-router-dom'
 import { useEffect, useState } from 'react';

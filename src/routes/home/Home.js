@@ -1,4 +1,3 @@
-import React from "react"
 import {  Col, Button, Image } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import './home.css'

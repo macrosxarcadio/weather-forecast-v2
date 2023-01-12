@@ -1,4 +1,6 @@
 import axios from 'axios'
+
+// eslint-disable-next-line
 const key = process.env.REACT_APP_API_KEY
 
 const apiReq = () => {

@@ -1,9 +1,5 @@
 
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { createBrowserHistory } from 'history'
-import { connectRouter, routerMiddleware } from 'connected-react-router'
-import { applyMiddleware, compose } from 'redux'
-import thunk from "redux-thunk"
+import { configureStore } from '@reduxjs/toolkit';
 import weatherSlice from '../features/weather/weatherSlice';
 import locationSlice from '../features/weather/LocationSlice';
 import forecastSlice from '../features/weather/forecastSlice';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector } from 'react-redux'
 import WeatherCard from "../../components/WeatherCard";
 import { Col } from 'antd'
@@ -10,7 +9,7 @@ const Forecast = () => {
             <Col span={4}></Col>
             <Col span={16}>
             {forecast && forecast.map((today) =>  
-            <WeatherCard  {...today?.main} {...today?.wind} description={today.weather[0].description} />)}
+            <WeatherCard  {...today?.main} {...today?.wind} description={today.weather[0].description}  key />)}
             </Col>
             <Col span={4}></Col>
         </>

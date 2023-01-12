@@ -11,7 +11,7 @@ The project use these techs:
 - The routing of the page is provided from react router https://reactrouter.com/en/main
 - This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Project structure
+## Project file structure
 
 -api : api request declarations
 -assets : assets folder contains all static files such as images, fonts etc

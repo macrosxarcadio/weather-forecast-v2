@@ -1,4 +1,5 @@
 import { Col, Typography, Statistic, Row, Image } from 'antd'
+import PropTypes from 'prop-types'
 
 const { Title } = Typography
 
@@ -30,3 +31,13 @@ const WeatherCard = ({ temp, humidity, speed, pressure, description }) => {
 }
 
 export default WeatherCard
+
+WeatherCard.propTypes = {
+    description: PropTypes.array.isRequired,
+    propBool: PropTypes.bool.isRequired,
+    propNumber: PropTypes.number,
+    temp: PropTypes.number,
+    humidity: PropTypes.number,
+    speed: PropTypes.number,
+    pressure: PropTypes.number,
+}
