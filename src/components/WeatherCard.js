@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 
 const { Title } = Typography;
 
-const WeatherCard = ({ temp, humidity, speed, pressure, description }) => {
-  console.log(description);
+const WeatherCard = ({ temp, humidity, speed, pressure, description, icon }) => {
   return (
     temp && (
       <Row gutter={5}>
@@ -19,7 +18,7 @@ const WeatherCard = ({ temp, humidity, speed, pressure, description }) => {
             valueStyle={{ fontSize: "3em", alignSelf: "center" }}
             prefix={
               <Image
-                src="http://openweathermap.org/img/wn/10d@2x.png"
+                src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
                 alt="logo"
                 width={100}
               />
@@ -53,4 +52,5 @@ WeatherCard.propTypes = {
   humidity: PropTypes.number,
   speed: PropTypes.number,
   pressure: PropTypes.number,
+  icon: PropTypes.icon,
 };

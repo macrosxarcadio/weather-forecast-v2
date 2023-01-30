@@ -14,6 +14,7 @@ const Forecast = () => {
               {...today?.main}
               {...today?.wind}
               description={today.weather[0].description}
+              icon={today.weather[0].icon}
               key={index}
             />
           ))}
