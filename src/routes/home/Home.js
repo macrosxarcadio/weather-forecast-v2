@@ -1,4 +1,4 @@
-import { Col, Button, Image } from "antd";
+import { Col, Button, /* Image */ } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import "./home.css";
 import { Link } from "react-router-dom";
@@ -21,11 +21,12 @@ const Home = () => {
       <Col span={8}></Col>
       <Col span={5}></Col>
       <Col span={14} style={{ justifyContent: "center", display: "flex" }}>
-        <Image
+        <img
           src={sun}
           alt="logo"
           width={400}
           style={{ alignSelf: "center" }}
+          onClick={(event) => event.preventDefault()}
         />
       </Col>
       <Col span={5}></Col>
