@@ -1,9 +1,7 @@
 import { Col, Typography, Statistic, Row, Image } from "antd";
 import PropTypes from "prop-types";
-
 const { Title } = Typography;
-
-const WeatherCard = ({ temp, humidity, speed, pressure, description, icon }) => {
+const WeatherCard = ({ temp, humidity, speed, pressure, description, icon, day}) => {
   return (
     temp && (
       <Row gutter={5}>
@@ -25,18 +23,22 @@ const WeatherCard = ({ temp, humidity, speed, pressure, description, icon }) => 
             }
           />
         </Col>
-        <Col span={5} style={{ textAlign: "center" }}>
+        <Col span={4} style={{ textAlign: "center" }}>
           <Title level={3}>Humidity</Title>
           <Statistic title="now" value={humidity} precision={2} />
         </Col>
-        <Col span={5} style={{ textAlign: "center" }}>
+        <Col span={4} style={{ textAlign: "center" }}>
           <Title level={3}>Wind Speed</Title>
           <Statistic title="km/h" value={speed} precision={2} />
         </Col>
-        <Col span={6} style={{ textAlign: "center" }}>
+        <Col span={4} style={{ textAlign: "center" }}>
           <Title level={3}>Pressure</Title>
           <Statistic title="pas" value={pressure} precision={2} />
         </Col>
+        {day &&<Col span={4} style={{ textAlign: "center" }}>
+          <Title level={3}>Date</Title>
+          <Statistic title="date" value={day} precision={2} />
+        </Col>}
       </Row>
     )
   );
@@ -52,5 +54,6 @@ WeatherCard.propTypes = {
   humidity: PropTypes.number,
   speed: PropTypes.number,
   pressure: PropTypes.number,
-  icon: PropTypes.icon,
+  icon: PropTypes.string,
+  day: PropTypes.object,
 };
