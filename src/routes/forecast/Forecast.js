@@ -1,13 +1,13 @@
 import { useSelector } from "react-redux";
 import WeatherCard from "../../components/WeatherCard";
 import { Col } from "antd";
+import moment from "moment";
 const Forecast = () => {
   const forecast = useSelector((state) => state.forecast.value);
-  console.log(forecast);
   return (
     <>
       <Col span={4}></Col>
-      <Col span={16}>
+      <Col span={16} style={{maxHeight: '80vh', maxWidth:'100%',  overflowY:'scroll', overflowX:'hidden' }}>
         {forecast &&
           forecast.map((today,index) => (
             <WeatherCard
@@ -16,6 +16,7 @@ const Forecast = () => {
               description={today.weather[0].description}
               icon={today.weather[0].icon}
               key={index}
+              day={moment(today.dt_txt).format('DD[/]MM')}
             />
           ))}
       </Col>
