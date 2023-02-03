@@ -4,8 +4,8 @@ const { Title } = Typography;
 const WeatherCard = ({ temp, humidity, speed, pressure, description, icon, day}) => {
   return (
     temp && (
-      <Row gutter={5}>
-        <Col span={7} style={{ textAlign: "center" }}>
+      <Row gutter={5} style={{backgroundColor:'rgb(255, 172, 80, 0.5)', margin:'10px 0px 10px 0px', borderRadius:'10px'}} >
+        <Col span={7} style={{ textAlign: "center"}} >
           <Title level={3} style={{ alignSelf: "center" }}>
             {description}
           </Title>
