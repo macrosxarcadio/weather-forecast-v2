@@ -34,13 +34,18 @@ const apiReq = () => {
             )
           )
           .then((res) =>
-            res.data.list.reduce(
-              (acc, actual, index) =>
-                index % 3 === 0 ? [...acc, actual] : acc,
-              [{}]
+            res.data.list.filter((forecast, index, forecastlist) => 
+/*               index === forecastlist.findIndex((actual) =>{
+              console.log("medidas",actual.dt_txt.split(' ').shift(), forecast.dt_txt.split(' ').shift(), actual.dt_txt.split(' ').shift() === forecast.dt_txt.split(' ').shift()) ;
+              return actual.dt_txt.split(' ').shift() === forecast.dt_txt.split(' ').shift();
+            }); */
+             index === forecastlist.findIndex((actual) =>
+              actual.dt_txt.split(' ').shift() === forecast.dt_txt.split(' ').shift())
+            
             )
           )
           .then((res) => {
+            console.log(res)
             let data = res;
             data.shift();
             setForecast(data);
