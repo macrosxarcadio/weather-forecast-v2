@@ -16,7 +16,7 @@ const useFetchWeather = (location) => {
 
   useEffect(() => (city || zip) && setPlace(city ? city : zip), [location]);
 
-  //get the lon and lat of the city or zip and dispatch to the store
+  //fetch the lon and lat of the city or zip and dispatch to the store
   useEffect(() => {
     let ignore = false;
     getGeolocation(place).then((res) => {
