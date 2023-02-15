@@ -1,11 +1,9 @@
 import { Col, Typography, Statistic, Row } from "antd";
 import PropTypes from "prop-types";
-import { useEffect } from "react";
 import './weather-card.css'
 const { Title } = Typography;
 const WeatherCard = ({ temp, humidity, speed, pressure, description, icon, day, name }) => {
   let spanLength = day ? Math.floor((24 - 8) / 4) : Math.floor((24 - 8) / 3);
-  useEffect(() => console.log(name),[name]);
   return (
     temp && (
       <Row grid={8}className='card' style={{ textAlign: "center", backgroundColor: 'rgb(255, 172, 80, 0.5)', /* margin:'10px 0px 10px 0px' */ borderRadius: '10px' }}  >

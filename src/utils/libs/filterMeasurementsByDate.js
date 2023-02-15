@@ -4,8 +4,6 @@ const filterMeasurementsByDate = (forecast) => {
     index === forecastlist.findIndex((actual) =>
       actual.dt_txt.split(' ').shift() === forecast.dt_txt.split(' ').shift())
   )
-
-  console.log(forecastResume);
   return(
     forecastResume
   )
