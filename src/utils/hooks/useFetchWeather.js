@@ -10,7 +10,7 @@ import { setNewForecast } from "../../features/weather/forecastSlice";
 const useFetchWeather = (location) => {
 
   const newLocation = useSelector((state) => state.location.value);
-  const { city, zip, /* lat, lon */ } = location;
+  const { city, zip, lat, lon } = location;
   const [place, setPlace] = useState()
 
   const dispatch = useDispatch();
@@ -38,16 +38,22 @@ const useFetchWeather = (location) => {
   // fetch the weather of the day and dispatch to store
   useEffect(() => {
     if (newLocation) {
-      const { lat, lon } = newLocation
+      const { lat, lon } = newLocation;
       getCurrentWeather({ lat, lon }).then((res) => dispatch(setNewWeather(res.data)))
     }
-  }, [newLocation]);
+    if (lat && lon) {
+      getCurrentWeather({ lat, lon }).then((res) => dispatch(setNewWeather(res.data)))
+    } 
+    }, [newLocation, lat, lon]);
 
   //fetch the forecast and dispatch to the store
   useEffect(() => {
     if (newLocation) {
       const { lat, lon } = newLocation
-      console.log("newlocation store", newLocation);
+      getForecast({ lat, lon }).then((res) => 
+        dispatch(setNewForecast(filterMeasurementsByDate(res.data))))
+    }
+    if (lat && lon) {
       getForecast({ lat, lon }).then((res) => 
         dispatch(setNewForecast(filterMeasurementsByDate(res.data))))
     }
