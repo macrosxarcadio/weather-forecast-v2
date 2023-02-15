@@ -1,11 +1,8 @@
-import api from './apiConfig'
+import api from "./apiConfig";
 
 const getGeolocation = (city) =>
-      api.get(
-        '/geo/1.0/direct?&limit=1',
-        {
-          params: { q: `${city}`},
-        }
-      );
-    
-export default getGeolocation
+  api.get("/geo/1.0/direct?&limit=1", {
+    params: { q: `${city}` },
+  });
+
+export default getGeolocation;

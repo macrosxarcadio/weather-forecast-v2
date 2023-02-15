@@ -1,15 +1,15 @@
-import { Col, Button} from "antd";
+import { Col, Button } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import "./home.css";
 import { Link } from "react-router-dom";
 import sun from "../../assets/sun.png";
-import macross from '../../assets/macross.png'
+import macross from "../../assets/macross.png";
 
 const Home = () => {
   return (
     <>
       <Col span={8}></Col>
-      <Col span={8} className="title" style={{padding:'0 0 0 0'}}>
+      <Col span={8} className="title" style={{ padding: "0 0 0 0" }}>
         <h1 style={{ paddingBottom: "1em" }}>Know your weather</h1>
         <Link to={"/search"}>
           {" "}
@@ -30,12 +30,26 @@ const Home = () => {
           onClick={(event) => event.preventDefault()}
         />
       </Col>
-      <Col span={5}>
-      </Col>
-      <Col span={24} style={{display:'flex', justifyContent:'center'}} >
-        <a className='contact' href='https://github.com/macrosxarcadio' style={{display:'flex', justifyContent:'center', alignItems:'center', color:"inherit"}}>
-        <img src={macross} id='macross'alt='log2' width={40} style={{alignSelf:'center', borderRadius:'50%'}} />
-        MacrossArcadio
+      <Col span={5}></Col>
+      <Col span={24} style={{ display: "flex", justifyContent: "center" }}>
+        <a
+          className="contact"
+          href="https://github.com/macrosxarcadio"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            color: "inherit",
+          }}
+        >
+          <img
+            src={macross}
+            id="macross"
+            alt="log2"
+            width={40}
+            style={{ alignSelf: "center", borderRadius: "50%" }}
+          />
+          MacrossArcadio
         </a>
       </Col>
     </>

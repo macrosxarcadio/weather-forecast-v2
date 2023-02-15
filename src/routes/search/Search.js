@@ -1,19 +1,18 @@
 import { SearchOutlined } from "@ant-design/icons";
 import { useSelector } from "react-redux";
 import WeatherCard from "../../components/WeatherCard";
-import useFetchWeather from '../../utils/hooks/useFetchWeather.js'
+import useFetchWeather from "../../utils/hooks/useFetchWeather.js";
 import { Button, Col, Input, Row, Form } from "antd";
 import { useState } from "react";
 
 const Search = () => {
-
   const [location, setLocation] = useState(null);
   const newWeather = useSelector((state) => state.weather.value);
 
-  useFetchWeather(location ? location : '')
-  
+  useFetchWeather(location ? location : "");
+
   const onFinish = (locationData) => {
-    setLocation(locationData)
+    setLocation(locationData);
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -67,7 +66,7 @@ const Search = () => {
       <Col span={4}></Col>
       <Col span={4}></Col>
       <Col span={16}>
-        {(newWeather?.main && newWeather?.name) && (
+        {newWeather?.main && newWeather?.name && (
           <WeatherCard
             {...newWeather?.main}
             {...newWeather?.wind}

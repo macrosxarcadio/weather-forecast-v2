@@ -25,7 +25,15 @@ const Root = () => {
       key: "search",
     },
     {
-      label: <Link to={"/forecast"} onClick={(event) => forecastState ? event.preventDefault() : event }> Forecast </Link>,
+      label: (
+        <Link
+          to={"/forecast"}
+          onClick={(event) => (forecastState ? event.preventDefault() : event)}
+        >
+          {" "}
+          Forecast{" "}
+        </Link>
+      ),
       key: "forecast",
       disabled: forecastState,
     },
