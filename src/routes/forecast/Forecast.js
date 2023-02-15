@@ -7,7 +7,7 @@ const Forecast = () => {
   return (
     <>
       <Col span={4}></Col>
-      <Col span={16} style={{maxHeight: '80vh', maxWidth:'100%',  overflowY:'scroll', overflowX:'hidden' }}>
+      <Col span={16} className='forecast' style={{maxHeight: '80vh', maxWidth:'100%',  overflowY:'scroll', overflowX:'hidden' }}>
         {forecast &&
           forecast.map((today,index) => (
             <WeatherCard
