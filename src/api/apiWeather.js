@@ -1,73 +1,11 @@
-import axios from "axios";
+import api from "./apiConfig";
 
-// eslint-disable-next-line
-const key = process.env.REACT_APP_API_KEY;
+const getCurrentWeather = ({lat,lon}) => 
+  api
+  .get(
+    `/data/2.5/weather?`,
+    {
+      params: { lat: lat, lon: lon },
+    });
 
-const apiReq = () => {
-  const getGeolocation = (city) =>
-    axios.get(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${key}`
-    );
-
-  const getCurrentWeather = (city, setCurrentWeather, lat, lon) => {
-    !(lat && lon)
-      ? getGeolocation(city).then((res) =>
-          axios
-            .get(
-              `https://api.openweathermap.org/data/2.5/weather?lat=${res.data[0].lat}&lon=${res.data[0].lon}&appid=${key}`
-            )
-            .then((res) => setCurrentWeather(res))
-        )
-      : axios
-          .get(
-            `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`
-          )
-          .then((res) => setCurrentWeather(res));
-  };
-
-  const getForecast = (city, setForecast, lat, lon) => {
-    !(lat && lon)
-      ? getGeolocation(city)
-          .then((res) =>
-            axios.get(
-              `https://api.openweathermap.org/data/2.5/forecast?lat=${res.data[0].lat}&lon=${res.data[0].lon}&appid=${key}`
-            )
-          )
-          .then((res) =>
-            res.data.list.filter((forecast, index, forecastlist) => 
-/*               index === forecastlist.findIndex((actual) =>{
-              console.log("medidas",actual.dt_txt.split(' ').shift(), forecast.dt_txt.split(' ').shift(), actual.dt_txt.split(' ').shift() === forecast.dt_txt.split(' ').shift()) ;
-              return actual.dt_txt.split(' ').shift() === forecast.dt_txt.split(' ').shift();
-            }); */
-             index === forecastlist.findIndex((actual) =>
-              actual.dt_txt.split(' ').shift() === forecast.dt_txt.split(' ').shift())
-            
-            )
-          )
-          .then((res) => {
-            console.log(res)
-            let data = res;
-            data.shift();
-            setForecast(data);
-          })
-      : axios
-          .get(
-            `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${key}`
-          )
-          .then((res) =>
-            res.data.list.reduce(
-              (acc, actual, index) =>
-                index % 3 === 0 ? [...acc, actual] : acc,
-              [{}]
-            )
-          )
-          .then((res) => {
-            let data = res;
-            data.shift();
-            setForecast(data);
-          });
-  };
-  return [getCurrentWeather, getForecast];
-};
-
-export default apiReq;
+export default getCurrentWeather;
