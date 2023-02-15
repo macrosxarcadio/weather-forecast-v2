@@ -1,61 +1,24 @@
-import { useEffect, useState } from "react";
 import { SearchOutlined } from "@ant-design/icons";
-import { useSelector, useDispatch } from "react-redux";
-import { setNewWeather } from "../../features/weather/weatherSlice";
-import { setNewLocation } from "../../features/weather/LocationSlice";
-import { setNewForecast } from "../../features/weather/forecastSlice";
-import apiReq from "../../api/apiWeather";
+import { useSelector } from "react-redux";
 import WeatherCard from "../../components/WeatherCard";
-
+import useFetchWeather from '../../utils/hooks/useFetchWeather.js'
 import { Button, Col, Input, Row, Form } from "antd";
+import { useState } from "react";
 
 const Search = () => {
-  const [currentWeather, setCurrentWeather] = useState();
-  const [forecast, setForecast] = useState();
-  const location = useSelector((state) => state.location.value);
+
+  const [location, setLocation] = useState(null);
   const newWeather = useSelector((state) => state.weather.value);
-  const [getCurrentWeather, getForecast] = apiReq();
 
-  const dispatch = useDispatch();
-
+  useFetchWeather(location ? location : '')
+  
   const onFinish = (locationData) => {
-    console.log("Success:", locationData);
-    dispatch(setNewLocation({ locationData }));
+    setLocation(locationData)
   };
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
-
-  useEffect(() => {
-    console.log("loc", location);
-    location &&
-      getCurrentWeather(
-        location.locationData.city
-          ? location.locationData.city
-          : location.locationData.zip,
-        setCurrentWeather,
-        location.locationData.lat,
-        location.locationData.lon
-      );
-    location &&
-      getForecast(
-        location.locationData.city
-          ? location.locationData.city
-          : location.locationData.zip,
-        setForecast,
-        location.locationData.lat,
-        location.locationData.lon
-      );
-  }, [location]);
-
-  useEffect(() => {
-    dispatch(setNewWeather(currentWeather?.data));
-  }, [currentWeather]);
-
-  useEffect(() => {
-    dispatch(setNewForecast(forecast));
-  }, [forecast]);
 
   return (
     <>
@@ -104,11 +67,13 @@ const Search = () => {
       <Col span={4}></Col>
       <Col span={4}></Col>
       <Col span={16}>
-        {newWeather?.main && (
+        {(newWeather?.main && newWeather?.name) && (
           <WeatherCard
             {...newWeather?.main}
             {...newWeather?.wind}
             {...newWeather?.weather[0]}
+            {...newWeather?.name}
+            name={newWeather.name}
           />
         )}
       </Col>
