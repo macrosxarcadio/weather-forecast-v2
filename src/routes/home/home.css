@@ -8,3 +8,8 @@
   padding-top: 2em;
   padding-bottom: 4em;
 }
+
+.contact:hover > #macross {
+  transform: rotate(20deg);
+  transition: transform 1s;
+}
