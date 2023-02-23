@@ -17,7 +17,7 @@ const Root = () => {
   }, []);
   const items = [
     {
-      label: <Link to={"/home"}> Home </Link>,
+      label: <Link to={"/"}> Home </Link>,
       key: "home",
     },
     {
